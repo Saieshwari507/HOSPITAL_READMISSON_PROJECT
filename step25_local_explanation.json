@@ -1,0 +1,70 @@
+{
+  "example_patient_raw": {
+    "race": "AfricanAmerican",
+    "gender": "Female",
+    "age": 75.0,
+    "admission_type_id": 1,
+    "admission_source_id": 7,
+    "payer_code": "MC",
+    "number_outpatient": 0,
+    "number_emergency": 1,
+    "number_inpatient": 2
+  },
+  "estimated_probability": 0.14119536831744392,
+  "local_method": "model-attributed directional signal using feature importances and deviation from the local row mean (approximate, not causal)",
+  "factors_toward_higher_estimated_risk": [
+    {
+      "feature": "number_inpatient",
+      "contribution": 0.1840165633233287,
+      "note": "Model-attributed factor associated with higher estimated risk."
+    },
+    {
+      "feature": "payer_code_Missing",
+      "contribution": 0.008004150627402421,
+      "note": "Model-attributed factor associated with higher estimated risk."
+    },
+    {
+      "feature": "number_outpatient",
+      "contribution": 0.005685456305981576,
+      "note": "Model-attributed factor associated with higher estimated risk."
+    },
+    {
+      "feature": "admission_source_id_7",
+      "contribution": 0.0009715071127490375,
+      "note": "Model-attributed factor associated with higher estimated risk."
+    },
+    {
+      "feature": "admission_type_id_5",
+      "contribution": -0.0,
+      "note": "Model-attributed factor associated with higher estimated risk."
+    }
+  ],
+  "factors_toward_lower_estimated_risk": [
+    {
+      "feature": "age",
+      "contribution": -0.19658261150012107,
+      "note": "Model-attributed factor associated with lower estimated risk."
+    },
+    {
+      "feature": "number_emergency",
+      "contribution": -0.008381499983849058,
+      "note": "Model-attributed factor associated with lower estimated risk."
+    },
+    {
+      "feature": "admission_source_id_17",
+      "contribution": -0.0002590481493507629,
+      "note": "Model-attributed factor associated with lower estimated risk."
+    },
+    {
+      "feature": "admission_source_id_3",
+      "contribution": -0.00021923244440851192,
+      "note": "Model-attributed factor associated with lower estimated risk."
+    },
+    {
+      "feature": "payer_code_OG",
+      "contribution": -0.00015872952788750596,
+      "note": "Model-attributed factor associated with lower estimated risk."
+    }
+  ],
+  "disclaimer": "These are model-attributed factors associated with the prediction. They do not establish medical causation."
+}
