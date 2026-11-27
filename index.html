@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hospital Readmission Risk Prediction</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">
+          <div class="sidebar-logo-icon">♥</div>
+          <div class="sidebar-logo-text">Hospital Readmission<br>Risk Prediction</div>
+        </div>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <a href="{{ url_for('index') }}" class="nav-item active">
+          <span class="nav-item-icon">🏠</span>
+          <span>Home</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Header -->
+      <header class="header">
+        <div class="header-left">
+          <div class="header-icon">♥</div>
+          <div>
+            <div class="header-title">Hospital Readmission Risk Prediction</div>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="user-area">
+            <div class="user-avatar">{{ user.name[0] if user else 'U' }}</div>
+            <div class="user-name">{{ user.name if user else 'User' }}</div>
+          </div>
+          <a href="{{ url_for('logout') }}" class="logout-btn">Sign out</a>
+        </div>
+      </header>
+
+      <!-- Content Area -->
+      <div class="content-area">
+        <!-- Hero Section -->
+        <section class="hero">
+          <h1 class="hero-title">Hospital Readmission Risk Prediction</h1>
+          <p class="hero-subtitle">Estimate a patient's 30-day readmission risk using historical patterns and an admission-time encounter snapshot.</p>
+        </section>
+
+        <!-- Dashboard Grid -->
+        <div class="dashboard-grid">
+          <!-- Patient Snapshot Card -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title">Patient Snapshot</h2>
+                <p class="card-subtitle">Enter the available admission information</p>
+              </div>
+              <div class="card-icon">📋</div>
+            </div>
+            
+            {% if error %}<div class="alert">{{ error }}</div>{% endif %}
+            
+            <form method="post">
+              <div class="form-grid">
+                <div class="form-field">
+                  <label for="race">Race</label>
+                  <select name="race" id="race" required>
+                    <option value="">Select</option>
+                    {% for option in ['Caucasian', 'AfricanAmerican', 'Asian', 'Hispanic', 'Other', 'Missing'] %}
+                    <option value="{{ option }}" {% if form_values.get('race') == option %}selected{% endif %}>{{ option }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                
+                <div class="form-field">
+                  <label for="gender">Gender</label>
+                  <select name="gender" id="gender" required>
+                    <option value="">Select</option>
+                    {% for option in ['Female', 'Male', 'Unknown/Invalid'] %}
+                    <option value="{{ option }}" {% if form_values.get('gender') == option %}selected{% endif %}>{{ option }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                
+                <div class="form-field">
+                  <label for="age">Age (years)</label>
+                  <input name="age" id="age" type="number" min="0" max="120" step="1" required value="{{ form_values.get('age', '') }}" placeholder="e.g. 75">
+                </div>
+                
+                <div class="form-field">
+                  <label for="admission_type_id">Admission Type</label>
+                  <select name="admission_type_id" id="admission_type_id" required>
+                    <option value="">Select type...</option>
+                    <option value="1" {% if form_values.get('admission_type_id') == '1' %}selected{% endif %}>Emergency (1)</option>
+                    <option value="2" {% if form_values.get('admission_type_id') == '2' %}selected{% endif %}>Urgent (2)</option>
+                    <option value="3" {% if form_values.get('admission_type_id') == '3' %}selected{% endif %}>Elective (3)</option>
+                    <option value="4" {% if form_values.get('admission_type_id') == '4' %}selected{% endif %}>Newborn (4)</option>
+                    <option value="5" {% if form_values.get('admission_type_id') == '5' %}selected{% endif %}>Not Available (5)</option>
+                    <option value="6" {% if form_values.get('admission_type_id') == '6' %}selected{% endif %}>NULL / Missing (6)</option>
+                    <option value="7" {% if form_values.get('admission_type_id') == '7' %}selected{% endif %}>Trauma Center (7)</option>
+                    <option value="8" {% if form_values.get('admission_type_id') == '8' %}selected{% endif %}>Not Mapped (8)</option>
+                  </select>
+                </div>
+                
+                <div class="form-field">
+                  <label for="admission_source_id">Admission Source</label>
+                  <select name="admission_source_id" id="admission_source_id" required>
+                    <option value="">Select source...</option>
+                    <option value="1" {% if form_values.get('admission_source_id') == '1' %}selected{% endif %}>Physician Referral (1)</option>
+                    <option value="2" {% if form_values.get('admission_source_id') == '2' %}selected{% endif %}>Clinic Referral (2)</option>
+                    <option value="3" {% if form_values.get('admission_source_id') == '3' %}selected{% endif %}>HMO Referral (3)</option>
+                    <option value="4" {% if form_values.get('admission_source_id') == '4' %}selected{% endif %}>Transfer from a hospital (4)</option>
+                    <option value="5" {% if form_values.get('admission_source_id') == '5' %}selected{% endif %}>Transfer from a Skilled Nursing Facility (SNF) (5)</option>
+                    <option value="6" {% if form_values.get('admission_source_id') == '6' %}selected{% endif %}>Transfer from another health care facility (6)</option>
+                    <option value="7" {% if form_values.get('admission_source_id') == '7' %}selected{% endif %}>Emergency Room (7)</option>
+                    <option value="8" {% if form_values.get('admission_source_id') == '8' %}selected{% endif %}>Court/Law Enforcement (8)</option>
+                    <option value="9" {% if form_values.get('admission_source_id') == '9' %}selected{% endif %}>Not Available (9)</option>
+                    <option value="10" {% if form_values.get('admission_source_id') == '10' %}selected{% endif %}>Transfer from critical access hospital (10)</option>
+                    <option value="11" {% if form_values.get('admission_source_id') == '11' %}selected{% endif %}>Normal Delivery (11)</option>
+                    <option value="12" {% if form_values.get('admission_source_id') == '12' %}selected{% endif %}>Premature Delivery (12)</option>
+                    <option value="13" {% if form_values.get('admission_source_id') == '13' %}selected{% endif %}>Sick Baby (13)</option>
+                    <option value="14" {% if form_values.get('admission_source_id') == '14' %}selected{% endif %}>Extramural Birth (14)</option>
+                    <option value="15" {% if form_values.get('admission_source_id') == '15' %}selected{% endif %}>Not Available (15)</option>
+                    <option value="17" {% if form_values.get('admission_source_id') == '17' %}selected{% endif %}>NULL (17)</option>
+                    <option value="18" {% if form_values.get('admission_source_id') == '18' %}selected{% endif %}>Transfer From Another Home Health Agency (18)</option>
+                    <option value="19" {% if form_values.get('admission_source_id') == '19' %}selected{% endif %}>Readmission to Same Home Health Agency (19)</option>
+                    <option value="20" {% if form_values.get('admission_source_id') == '20' %}selected{% endif %}>Not Mapped (20)</option>
+                    <option value="21" {% if form_values.get('admission_source_id') == '21' %}selected{% endif %}>Unknown/Invalid (21)</option>
+                    <option value="22" {% if form_values.get('admission_source_id') == '22' %}selected{% endif %}>Transfer from hospital inpt/same fac result in a sep claim (22)</option>
+                    <option value="23" {% if form_values.get('admission_source_id') == '23' %}selected{% endif %}>Born inside this hospital (23)</option>
+                    <option value="24" {% if form_values.get('admission_source_id') == '24' %}selected{% endif %}>Born outside this hospital (24)</option>
+                    <option value="25" {% if form_values.get('admission_source_id') == '25' %}selected{% endif %}>Transfer from Ambulatory Surgery Center (25)</option>
+                    <option value="26" {% if form_values.get('admission_source_id') == '26' %}selected{% endif %}>Transfer from Hospice (26)</option>
+                  </select>
+                </div>
+                
+                <div class="form-field">
+                  <label for="payer_code">Payer / Insurance</label>
+                  <select name="payer_code" id="payer_code" required>
+                    <option value="">Select payer...</option>
+                    <option value="MC" {% if form_values.get('payer_code') == 'MC' %}selected{% endif %}>Medicaid (MC)</option>
+                    <option value="MD" {% if form_values.get('payer_code') == 'MD' %}selected{% endif %}>Medicare (MD)</option>
+                    <option value="HM" {% if form_values.get('payer_code') == 'HM' %}selected{% endif %}>Health Maintenance Organization (HM)</option>
+                    <option value="UN" {% if form_values.get('payer_code') == 'UN' %}selected{% endif %}>Uninsured (UN)</option>
+                    <option value="BC" {% if form_values.get('payer_code') == 'BC' %}selected{% endif %}>Blue Cross/Blue Shield (BC)</option>
+                    <option value="SP" {% if form_values.get('payer_code') == 'SP' %}selected{% endif %}>Self-Pay (SP)</option>
+                    <option value="CP" {% if form_values.get('payer_code') == 'CP' %}selected{% endif %}>Commercial Payer (CP)</option>
+                    <option value="SI" {% if form_values.get('payer_code') == 'SI' %}selected{% endif %}>State Insurance (SI)</option>
+                    <option value="DM" {% if form_values.get('payer_code') == 'DM' %}selected{% endif %}>Department of Defense / Military Insurance (DM)</option>
+                    <option value="CM" {% if form_values.get('payer_code') == 'CM' %}selected{% endif %}>Charity / Community Program (CM)</option>
+                    <option value="CH" {% if form_values.get('payer_code') == 'CH' %}selected{% endif %}>Children's Health Insurance Program (CH)</option>
+                    <option value="PO" {% if form_values.get('payer_code') == 'PO' %}selected{% endif %}>Private Insurance - Other (PO)</option>
+                    <option value="WC" {% if form_values.get('payer_code') == 'WC' %}selected{% endif %}>Workers' Compensation (WC)</option>
+                    <option value="OT" {% if form_values.get('payer_code') == 'OT' %}selected{% endif %}>Other (OT)</option>
+                    <option value="OG" {% if form_values.get('payer_code') == 'OG' %}selected{% endif %}>Other Government Programs (OG)</option>
+                    <option value="MP" {% if form_values.get('payer_code') == 'MP' %}selected{% endif %}>Managed Care Plan (MP)</option>
+                    <option value="FR" {% if form_values.get('payer_code') == 'FR' %}selected{% endif %}>Federal Program (FR)</option>
+                    <option value="?" {% if form_values.get('payer_code') == '?' %}selected{% endif %}>Missing/Unknown (?)</option>
+                  </select>
+                </div>
+                
+                <div class="form-field">
+                  <label for="number_outpatient">Prior Outpatient Visits</label>
+                  <input name="number_outpatient" id="number_outpatient" type="number" min="0" step="1" required value="{{ form_values.get('number_outpatient', '0') }}" placeholder="0">
+                </div>
+                
+                <div class="form-field">
+                  <label for="number_emergency">Prior Emergency Visits</label>
+                  <input name="number_emergency" id="number_emergency" type="number" min="0" step="1" required value="{{ form_values.get('number_emergency', '0') }}" placeholder="0">
+                </div>
+                
+                <div class="form-field">
+                  <label for="number_inpatient">Prior Inpatient Visits</label>
+                  <input name="number_inpatient" id="number_inpatient" type="number" min="0" step="1" required value="{{ form_values.get('number_inpatient', '0') }}" placeholder="0">
+                </div>
+              </div>
+
+              <button type="submit" class="btn-primary">
+                <span>Run Risk Assessment</span>
+                <span>→</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Results Panel -->
+          <div class="card">
+            {% if result %}
+              <div class="card-header">
+                <div>
+                  <h2 class="card-title">Estimated 30-Day Readmission Risk</h2>
+                  <p class="card-subtitle">Model screening estimate</p>
+                </div>
+                <div class="card-icon">📊</div>
+              </div>
+
+              <!-- Probability Display -->
+              <div class="probability-display">
+                <div class="probability-value {% if result.crosses_screening_threshold %}higher-risk{% else %}lower-risk{% endif %}">
+                  {{ '%.1f'|format(result.estimated_probability * 100) }}%
+                </div>
+                <div class="probability-label">Estimated 30-day readmission probability</div>
+                <div class="risk-category {% if result.crosses_screening_threshold %}higher-risk{% else %}lower-risk{% endif %}">
+                  {{ result.risk_category }}
+                </div>
+              </div>
+
+              <div class="disclaimer-card">
+                <div class="disclaimer-title">Important disclaimer</div>
+                <div class="disclaimer-text">{{ result.disclaimer }}</div>
+              </div>
+
+              <!-- Threshold -->
+              <div class="threshold-card">
+                <div class="threshold-label">Screening threshold</div>
+                <div class="threshold-value">{{ (result.selected_threshold * 100) | round(0) | int }}%</div>
+              </div>
+
+              {% if result.crosses_screening_threshold %}
+                <!-- Suggested follow-up (higher risk only) -->
+                <div class="followup-card">
+                  <h3 class="result-card-title">
+                    <span>💡</span> Suggested follow-up
+                  </h3>
+                  <p style="font-size:12px;color:var(--text-secondary);margin:8px 0 0;line-height:1.6;">
+                    Review the result with a qualified healthcare professional and consider whether
+                    timely follow-up or care coordination is appropriate.
+                  </p>
+                </div>
+              {% endif %}
+
+            {% else %}
+              <div class="empty-state">
+                <div class="empty-state-icon">📋</div>
+                <h3 class="empty-state-title">Awaiting Patient Snapshot</h3>
+                <p class="empty-state-text">Complete the patient information form to generate a risk assessment.</p>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+          <p class="footer-text">Hospital Readmission Risk Prediction</p>
+        </footer>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
