@@ -21,6 +21,12 @@ CONFIG_PATH = PROJECT_ROOT / "models" / "final_model_config.joblib"
 SCHEMA_PATH = PROJECT_ROOT / "analysis" / "step26_prediction_schema.json"
 REPORT_PATH = PROJECT_ROOT / "analysis" / "step26_risk_assessment_report.md"
 
+DISCLAIMER = (
+    "This tool provides an estimated risk based on patterns in historical data and is "
+    "intended for academic decision-support demonstration only. It is not a diagnosis or "
+    "a substitute for professional clinical judgment."
+)
+
 FORBIDDEN_FIELDS = {
     "patient_nbr",
     "encounter_id",
@@ -38,11 +44,6 @@ ALLOWED_RACE = {
 }
 ALLOWED_GENDER = {"Female", "Male", "Unknown/Invalid"}
 AGE_BAND_PATTERN = re.compile(r"^\[\d+-\d+\)$")
-DISCLAIMER = (
-    "This tool provides an estimated risk based on patterns in historical data and is "
-    "intended for academic decision-support demonstration only. It is not a diagnosis "
-    "or a substitute for professional clinical judgment."
-)
 
 
 def load_artifacts():
@@ -212,6 +213,7 @@ def write_schema() -> None:
             "risk_category",
             "predicted_high_risk",
             "model_attributed_factors",
+            "disclaimer",
         ],
     }
     SCHEMA_PATH.write_text(json.dumps(schema, indent=2), encoding="utf-8")
