@@ -1,0 +1,21 @@
+feature,coefficient,absolute_coefficient,direction
+categorical__age_group_18-40,-1.0457793581673165,1.0457793581673165,decreases estimated risk
+categorical__age_group_76+,0.8866173506821018,0.8866173506821018,increases estimated risk
+categorical__age_group_66-75,0.6570323491977575,0.6570323491977575,increases estimated risk
+numeric__age,-0.5608651323739268,0.5608651323739268,decreases estimated risk
+numeric__pao2_fio2_ratio,-0.5229217699639651,0.5229217699639651,decreases estimated risk
+numeric__sbp_max,0.47187245692485347,0.47187245692485347,increases estimated risk
+numeric__respiratory_rate_mean,-0.42649295822835065,0.42649295822835065,decreases estimated risk
+numeric__respiratory_rate_min,0.3861342242155219,0.3861342242155219,increases estimated risk
+numeric__temp_celsius_min,0.37703642411573285,0.37703642411573285,increases estimated risk
+numeric__sepsis_label,-0.37252275896614023,0.37252275896614023,decreases estimated risk
+numeric__sbp_min,-0.3610416018612983,0.3610416018612983,decreases estimated risk
+categorical__insurance_Self-pay,0.3258810054620823,0.3258810054620823,increases estimated risk
+categorical__age_group_41-55,-0.31719589142095694,0.31719589142095694,decreases estimated risk
+numeric__temp_celsius_max,-0.30209441971867496,0.30209441971867496,decreases estimated risk
+numeric__sbp_mean,-0.2860864621146415,0.2860864621146415,decreases estimated risk
+categorical__insurance_Medicaid,-0.2857494893046034,0.2857494893046034,decreases estimated risk
+numeric__spo2_max,0.2821769477896464,0.2821769477896464,increases estimated risk
+numeric__spo2_mean,-0.26087934496748194,0.26087934496748194,decreases estimated risk
+categorical__hospital_admit_source_Transfer,0.23599819018552165,0.23599819018552165,increases estimated risk
+numeric__bmi,-0.221240069066321,0.221240069066321,decreases estimated risk

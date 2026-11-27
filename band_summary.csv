@@ -1,0 +1,8 @@
+band,group,patient_count,readmissions,readmission_rate_percentage
+severity_band,low,30,0,0.0
+severity_band,moderate,2725,130,4.770642201834862
+severity_band,high,2003,114,5.691462805791312
+severity_band,very_high,242,25,10.330578512396695
+comorbidity_band,none,711,38,5.344585091420535
+comorbidity_band,one_to_two,2913,152,5.217988328184003
+comorbidity_band,three_or_more,1376,79,5.741279069767442

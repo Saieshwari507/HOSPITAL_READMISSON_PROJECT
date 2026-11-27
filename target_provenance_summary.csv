@@ -1,0 +1,27 @@
+check,evidence,result,interpretation
+Target column exists,True,verified,The original workbook contains the named target column.
+Target is binary,True,verified,Observed target values are 0 and 1.
+Target missingness,0,verified,No target values should be missing before modeling.
+Target-generation documentation,No target-generation specification found in inspected scripts,unknown,The available project files define the target name but do not explain how labels were generated.
+Subject repetition,0,verified,Unique subject IDs imply one row per subject in this workbook.
+Potential timestamp columns,icu_admit_time_hour,verified,No full admission/discharge/readmission timestamp columns are present; only hour/day summaries are available.
+Encounter ID columns,subject_id,verified,Only subject_id is present as an identifier; no encounter ID is supplied.
+Future-information named columns,none,verified,No explicitly named discharge or readmission timestamp column was found.
+Target by row-order quartile,"{0: 0.0608, 1: 0.052, 2: 0.0568, 3: 0.0456}",observed,Differences may reflect ordering or random variation; row order is not documented as meaningful.
+Target by subject_id quartile,"{0: 0.0624, 1: 0.0528, 2: 0.0544, 3: 0.0456}",observed,Differences may reflect synthetic ID construction or chance; subject_id is not a feature.
+Target relationship: sepsis_label,0.0413,observed,Association only; this does not establish target derivation or causation.
+Target relationship: icu_los_hours,-0.0123,observed,Association only; this does not establish target derivation or causation.
+Target relationship: vasopressors_flag,0.0321,observed,Association only; this does not establish target derivation or causation.
+Target relationship: mechanical_ventilation,,observed,Association only; this does not establish target derivation or causation.
+Target relationship: fio2_percent,0.0131,observed,Association only; this does not establish target derivation or causation.
+Target relationship: antibiotics_24h,0.0195,observed,Association only; this does not establish target derivation or causation.
+Target relationship: fluids_ml_24h,0.041,observed,Association only; this does not establish target derivation or causation.
+Target relationship: sedation_score,0.0082,observed,Association only; this does not establish target derivation or causation.
+Target relationship: vasopressor_dose_mcg_kg_min,0.0222,observed,Association only; this does not establish target derivation or causation.
+Target relationship: insulin_infusion_flag,-0.0102,observed,Association only; this does not establish target derivation or causation.
+Target relationship: sofa_score,0.0556,observed,Association only; this does not establish target derivation or causation.
+Target relationship: apache_iv,0.0488,observed,Association only; this does not establish target derivation or causation.
+Target relationship: qsofa,0.0191,observed,Association only; this does not establish target derivation or causation.
+Target relationship: sirs_criteria,0.0281,observed,Association only; this does not establish target derivation or causation.
+Target relationship: gcs_total,0.001,observed,Association only; this does not establish target derivation or causation.
+Target references in inspected scripts,13,verified,Scripts validate and model the target but do not document its generation mechanism.

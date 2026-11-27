@@ -1,0 +1,27 @@
+{
+  "assessment": {
+    "estimated_probability": 0.44553697391682895,
+    "relative_band": "above historical baseline",
+    "positive_model_factors": [
+      "numeric__potassium",
+      "numeric__sbp_min",
+      "numeric__respiratory_rate_mean",
+      "numeric__sbp_mean",
+      "numeric__height_cm"
+    ],
+    "negative_model_factors": [
+      "numeric__pao2_fio2_ratio",
+      "numeric__liver_disease",
+      "numeric__spo2_mean",
+      "numeric__respiratory_rate_min",
+      "numeric__sbp_max"
+    ],
+    "disclaimer": "Experimental model output for research only; not a diagnosis or clinical recommendation."
+  },
+  "follow_up_considerations": [
+    "Review the model output with a qualified clinician; confirm that it adds value beyond clinical judgment.",
+    "Identify missing or outdated laboratory information and let the treating team decide whether repeat testing is appropriate.",
+    "Confirm handoff information, ownership of follow-up, and continuity between the transferring and receiving teams."
+  ],
+  "disclaimer": "This output is a research prototype. It does not diagnose, prescribe, replace clinical judgment, or provide individualized medical advice."
+}

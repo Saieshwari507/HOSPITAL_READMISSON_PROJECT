@@ -1,0 +1,3 @@
+partition,patients,encounters,positive_readmissions,readmission_percentage,patient_overlap,feature_count_after_encoding
+train,57214,81484,9094,11.160473221736783,0,55
+test,14304,20282,2263,11.157676757716201,0,55

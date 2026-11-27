@@ -1,0 +1,78 @@
+column,group,dtype,missing_count,unique_count,timing_classification,confidence,reason
+subject_id,Other / undocumented,int64,0,5000,identifier,verified,Identifier in the original dataset; not a clinical predictor.
+age,Demographics,int64,0,72,likely available at hospital admission,hypothesis,"Patient characteristics or history, but timestamps are not documented."
+gender,Demographics,object,0,3,likely available at hospital admission,hypothesis,"Patient characteristics or history, but timestamps are not documented."
+weight_kg,Demographics,float64,0,680,likely available at hospital admission,hypothesis,"Patient characteristics or history, but timestamps are not documented."
+height_cm,Demographics,float64,0,397,likely available at hospital admission,hypothesis,"Patient characteristics or history, but timestamps are not documented."
+bmi,Demographics,float64,251,316,likely available at hospital admission,hypothesis,"Patient characteristics or history, but timestamps are not documented."
+ethnicity,Demographics,object,0,5,likely available at hospital admission,hypothesis,"Patient characteristics or history, but timestamps are not documented."
+insurance,Demographics,object,0,4,likely available at hospital admission,hypothesis,"Patient characteristics or history, but timestamps are not documented."
+hr_mean,Vital signs,float64,0,929,timing unknown,unknown,"Summary statistic is present, but measurement window is not documented."
+hr_max,Vital signs,float64,0,901,timing unknown,unknown,"Summary statistic is present, but measurement window is not documented."
+hr_min,Vital signs,float64,0,919,timing unknown,unknown,"Summary statistic is present, but measurement window is not documented."
+hr_std,Vital signs,float64,0,176,timing unknown,unknown,"Summary statistic is present, but measurement window is not documented."
+sbp_mean,Vital signs,float64,0,960,timing unknown,unknown,"Summary statistic is present, but measurement window is not documented."
+sbp_max,Vital signs,float64,0,983,timing unknown,unknown,"Summary statistic is present, but measurement window is not documented."
+sbp_min,Vital signs,float64,0,988,timing unknown,unknown,"Summary statistic is present, but measurement window is not documented."
+sbp_std,Vital signs,float64,0,214,timing unknown,unknown,"Summary statistic is present, but measurement window is not documented."
+dbp_mean,Vital signs,float64,0,694,timing unknown,unknown,"Summary statistic is present, but measurement window is not documented."
+dbp_max,Vital signs,float64,0,692,timing unknown,unknown,"Summary statistic is present, but measurement window is not documented."
+dbp_min,Vital signs,float64,0,695,timing unknown,unknown,"Summary statistic is present, but measurement window is not documented."
+dbp_std,Vital signs,float64,0,160,timing unknown,unknown,"Summary statistic is present, but measurement window is not documented."
+map_mean,Vital signs,float64,163,773,timing unknown,unknown,"Summary statistic is present, but measurement window is not documented."
+temp_celsius_mean,Vital signs,float64,0,40,timing unknown,unknown,"Summary statistic is present, but measurement window is not documented."
+temp_celsius_max,Vital signs,float64,0,42,timing unknown,unknown,"Summary statistic is present, but measurement window is not documented."
+temp_celsius_min,Vital signs,float64,0,42,timing unknown,unknown,"Summary statistic is present, but measurement window is not documented."
+temp_celsius_std,Vital signs,float64,0,63,timing unknown,unknown,"Summary statistic is present, but measurement window is not documented."
+spo2_mean,Vital signs,float64,0,141,timing unknown,unknown,"Summary statistic is present, but measurement window is not documented."
+spo2_min,Vital signs,float64,0,165,timing unknown,unknown,"Summary statistic is present, but measurement window is not documented."
+spo2_max,Vital signs,float64,0,151,timing unknown,unknown,"Summary statistic is present, but measurement window is not documented."
+spo2_std,Vital signs,float64,0,286,timing unknown,unknown,"Summary statistic is present, but measurement window is not documented."
+respiratory_rate_mean,Vital signs,int64,0,22,timing unknown,unknown,"Summary statistic is present, but measurement window is not documented."
+respiratory_rate_max,Vital signs,int64,0,26,timing unknown,unknown,"Summary statistic is present, but measurement window is not documented."
+respiratory_rate_min,Vital signs,int64,0,24,timing unknown,unknown,"Summary statistic is present, but measurement window is not documented."
+respiratory_rate_std,Vital signs,float64,0,53,timing unknown,unknown,"Summary statistic is present, but measurement window is not documented."
+wbc,Laboratory,float64,527,4451,timing unknown,unknown,Laboratory timing and collection window are not documented.
+lactate_mmol,Laboratory,float64,0,504,timing unknown,unknown,Laboratory timing and collection window are not documented.
+creatinine,Laboratory,float64,550,539,timing unknown,unknown,Laboratory timing and collection window are not documented.
+platelet_count,Laboratory,float64,550,438,timing unknown,unknown,Laboratory timing and collection window are not documented.
+bilirubin_total,Laboratory,float64,557,243,timing unknown,unknown,Laboratory timing and collection window are not documented.
+glucose,Laboratory,float64,565,209,timing unknown,unknown,Laboratory timing and collection window are not documented.
+ph_arterial,Laboratory,float64,502,343,timing unknown,unknown,Laboratory timing and collection window are not documented.
+pao2_fio2_ratio,Laboratory,float64,0,168,timing unknown,unknown,Laboratory timing and collection window are not documented.
+inr,Laboratory,float64,558,145,timing unknown,unknown,Laboratory timing and collection window are not documented.
+sodium,Laboratory,float64,531,234,timing unknown,unknown,Laboratory timing and collection window are not documented.
+potassium,Laboratory,float64,504,282,timing unknown,unknown,Laboratory timing and collection window are not documented.
+chloride,Laboratory,float64,497,294,timing unknown,unknown,Laboratory timing and collection window are not documented.
+bicarbonate,Laboratory,float64,511,209,timing unknown,unknown,Laboratory timing and collection window are not documented.
+hematocrit,Laboratory,float64,554,323,timing unknown,unknown,Laboratory timing and collection window are not documented.
+hemoglobin,Laboratory,float64,530,910,timing unknown,unknown,Laboratory timing and collection window are not documented.
+diabetes,Comorbidities,int64,0,2,likely available at hospital admission,hypothesis,"Patient characteristics or history, but timestamps are not documented."
+hypertension,Comorbidities,int64,0,2,likely available at hospital admission,hypothesis,"Patient characteristics or history, but timestamps are not documented."
+chf,Comorbidities,int64,0,2,likely available at hospital admission,hypothesis,"Patient characteristics or history, but timestamps are not documented."
+copd,Comorbidities,int64,0,2,likely available at hospital admission,hypothesis,"Patient characteristics or history, but timestamps are not documented."
+chronic_kidney_disease,Comorbidities,int64,0,2,likely available at hospital admission,hypothesis,"Patient characteristics or history, but timestamps are not documented."
+liver_disease,Comorbidities,int64,0,2,likely available at hospital admission,hypothesis,"Patient characteristics or history, but timestamps are not documented."
+immunosuppression,Comorbidities,int64,0,2,likely available at hospital admission,hypothesis,"Patient characteristics or history, but timestamps are not documented."
+cad,Comorbidities,int64,0,2,likely available at hospital admission,hypothesis,"Patient characteristics or history, but timestamps are not documented."
+atrial_fibrillation,Comorbidities,int64,0,2,likely available at hospital admission,hypothesis,"Patient characteristics or history, but timestamps are not documented."
+cancer_active,Comorbidities,int64,0,2,likely available at hospital admission,hypothesis,"Patient characteristics or history, but timestamps are not documented."
+vasopressors_flag,Treatment / ICU,int64,0,2,potentially post-treatment/post-outcome,hypothesis,Treatment or support variable may occur after deterioration; exact timing is not documented.
+mechanical_ventilation,Treatment / ICU,int64,0,1,potentially post-treatment/post-outcome,hypothesis,Treatment or support variable may occur after deterioration; exact timing is not documented.
+fio2_percent,Treatment / ICU,float64,0,637,potentially post-treatment/post-outcome,hypothesis,Treatment or support variable may occur after deterioration; exact timing is not documented.
+antibiotics_24h,Treatment / ICU,int64,0,2,potentially post-treatment/post-outcome,hypothesis,Treatment or support variable may occur after deterioration; exact timing is not documented.
+fluids_ml_24h,Treatment / ICU,int64,0,2246,potentially post-treatment/post-outcome,hypothesis,Treatment or support variable may occur after deterioration; exact timing is not documented.
+sedation_score,Treatment / ICU,int64,0,7,potentially post-treatment/post-outcome,hypothesis,Treatment or support variable may occur after deterioration; exact timing is not documented.
+vasopressor_dose_mcg_kg_min,Treatment / ICU,float64,0,476,potentially post-treatment/post-outcome,hypothesis,Treatment or support variable may occur after deterioration; exact timing is not documented.
+insulin_infusion_flag,Treatment / ICU,int64,0,2,potentially post-treatment/post-outcome,hypothesis,Treatment or support variable may occur after deterioration; exact timing is not documented.
+sofa_score,Severity scores,int64,0,15,timing unknown,unknown,Score calculation window and availability time are not documented.
+apache_iv,Severity scores,float64,0,721,timing unknown,unknown,Score calculation window and availability time are not documented.
+qsofa,Severity scores,int64,0,4,timing unknown,unknown,Score calculation window and availability time are not documented.
+sirs_criteria,Severity scores,int64,0,5,timing unknown,unknown,Score calculation window and availability time are not documented.
+gcs_total,Severity scores,int64,0,8,timing unknown,unknown,Score calculation window and availability time are not documented.
+icu_los_hours,Hospital / encounter context,float64,0,1412,potentially post-treatment/post-outcome,hypothesis,Length of stay is accumulated during or after the ICU encounter.
+hospital_admit_source,Hospital / encounter context,object,0,4,likely available at hospital admission,hypothesis,"Admission source is conventionally known at intake, but project timestamps do not verify this."
+icu_admit_time_hour,Hospital / encounter context,int64,0,24,likely available at hospital admission,hypothesis,"Calendar or admission-hour context appears available, but no raw timestamp is supplied."
+day_of_week,Hospital / encounter context,int64,0,7,likely available at hospital admission,hypothesis,"Calendar or admission-hour context appears available, but no raw timestamp is supplied."
+readmission_30day,Other / undocumented,int64,0,2,post-outcome / target,verified,Defined project target; never use as a feature.
+sepsis_label,Other / undocumented,int64,0,2,timing unknown,unknown,No project documentation establishes when this variable becomes available.

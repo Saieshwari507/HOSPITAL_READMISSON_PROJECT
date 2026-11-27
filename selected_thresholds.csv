@@ -1,0 +1,3 @@
+model,selected_threshold,training_oof_f2
+logistic_regression,0.03,0.22142121524201855
+random_forest,0.04,0.2213514085998729

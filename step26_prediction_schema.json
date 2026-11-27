@@ -1,0 +1,39 @@
+{
+  "required_fields": [
+    "race",
+    "gender",
+    "age",
+    "admission_type_id",
+    "admission_source_id",
+    "payer_code",
+    "number_outpatient",
+    "number_emergency",
+    "number_inpatient"
+  ],
+  "forbidden_fields": [
+    "encounter_id",
+    "patient_nbr",
+    "readmission_30day",
+    "readmitted"
+  ],
+  "field_types": {
+    "race": "categorical string",
+    "gender": "categorical string",
+    "age": "numeric years or UCI age band",
+    "admission_type_id": "integer",
+    "admission_source_id": "integer",
+    "payer_code": "string",
+    "number_outpatient": "non-negative integer",
+    "number_emergency": "non-negative integer",
+    "number_inpatient": "non-negative integer"
+  },
+  "output_fields": [
+    "estimated_probability",
+    "selected_threshold",
+    "crosses_screening_threshold",
+    "risk_category",
+    "predicted_high_risk",
+    "model_attributed_factors",
+    "disclaimer"
+  ]
+}

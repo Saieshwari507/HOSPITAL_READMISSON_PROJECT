@@ -1,0 +1,10 @@
+feature
+race
+gender
+age
+admission_type_id
+admission_source_id
+payer_code
+number_outpatient
+number_emergency
+number_inpatient

@@ -1,0 +1,34 @@
+{
+  "selected_model": "gradient_boosting",
+  "selected_threshold": 0.15,
+  "validation_metrics_at_selected_threshold": {
+    "threshold": 0.15,
+    "precision": 0.21043577981651376,
+    "recall": 0.2827426810477658,
+    "f1": 0.24128862590401054,
+    "accuracy": 0.8081143997339542,
+    "specificity": 0.8716682199440821,
+    "sensitivity": 0.2827426810477658,
+    "tp": 367,
+    "fp": 1377,
+    "tn": 9353,
+    "fn": 931,
+    "selected": true
+  },
+  "test_metrics": {
+    "roc_auc": 0.6188044082795014,
+    "average_precision": 0.19766907580746762,
+    "precision": 0.21448181194234728,
+    "recall": 0.2761820592134335,
+    "f1": 0.24145257871354064,
+    "specificity": 0.8729674232754315,
+    "sensitivity": 0.2761820592134335,
+    "brier_score": 0.09619164314959436,
+    "confusion_matrix": {
+      "tn": 15730,
+      "fp": 2289,
+      "fn": 1638,
+      "tp": 625
+    }
+  }
+}
